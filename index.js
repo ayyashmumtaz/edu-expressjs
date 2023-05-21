@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 //import route posts
 const kerjaanRouter = require('./routes/data_outdoor');
-app.use('/api/pekerjaan', kerjaanRouter); // use route posts di Express
+app.use('/api/kerja', kerjaanRouter); // use route posts di Express
 
 
 app.listen(port, () => {
