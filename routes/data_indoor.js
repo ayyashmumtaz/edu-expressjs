@@ -26,12 +26,8 @@ router.get('/', function (req, res) {
 router.post('/simpan', [
 
     //validation
+  body('id_indoor').notEmpty(),
     body('id_kerja').notEmpty(),
-    body('waktu').notEmpty(),
-    body('target').notEmpty(),
-    body('paket_pekerjaan').notEmpty(),
-    body('jumlah').notEmpty(),
-    body('pekerja').notEmpty(),
     body('status').notEmpty(),
 
 ], (req, res) => {
@@ -46,13 +42,10 @@ router.post('/simpan', [
 
     //define formData
     let formData = {
+        id_indoor: req.body.id_indoor,
         id_kerja: req.body.id_kerja,
-        waktu: req.body.waktu,
-        target: req.body.target,
-        paket_pekerjaan: req.body.paket_pekerjaan,
-        jumlah: req.body.jumlah,
-        pekerja: req.body.pekerja,
         status: req.body.status,
+        
     }
 
     // insert query
@@ -105,12 +98,8 @@ router.get('/getid/:id', function (req, res) {
 
 router.patch('/update/:id',  [
 
+    body('id_indoor').notEmpty(),
     body('id_kerja').notEmpty(),
-    body('waktu').notEmpty(),
-    body('target').notEmpty(),
-    body('paket_pekerjaan').notEmpty(),
-    body('jumlah').notEmpty(),
-    body('pekerja').notEmpty(),
     body('status').notEmpty(),
 
 ], (req, res) => {
@@ -156,7 +145,7 @@ router.delete('/delete/:id', function (req, res) {
 
     const id = req.params.id;
 
-    connection.query(`DELETE FROM pekerjaan WHERE id_kerja = '${id}'`, function (err, rows) {
+    connection.query(`DELETE FROM indoor WHERE id_kerja = '${id}'`, function (err, rows) {
 
         if (err) {
             return res.status(500).json({
