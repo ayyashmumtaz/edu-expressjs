@@ -126,16 +126,13 @@ router.patch('/update/:id',  [
     const id = req.params.id;
 
     let formData = {
+        id_indoor: req.body.id_indoor,
         id_kerja: req.body.id_kerja,
-        waktu: req.body.waktu,
-        target: req.body.target,
-        paket_pekerjaan: req.body.paket_pekerjaan,
-        jumlah: req.body.jumlah,
-        pekerja: req.body.pekerja,
         status: req.body.status,
+        
     }
 
-    connection.query(`UPDATE pekerjaan SET ? WHERE id_kerja = '${id}'`,formData,function (err, rows) {
+    connection.query(`UPDATE indoor SET ? WHERE id_kerja = '${id}'`,formData,function (err, rows) {
 
         if(err){
             return res.status(500).json({
